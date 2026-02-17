@@ -21,4 +21,12 @@ data class Atleta(
             require(fotoUrl.startsWith("http")) { "La URL de la foto debe ser válida" }
         }
     }
+    enum class EstadoAtleta{
+        Activo,
+        Lesionado,
+        Dudoso,
+        eliminado
+    }
+
+
 }
