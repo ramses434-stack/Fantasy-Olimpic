@@ -4,17 +4,19 @@ import kotlinx.serialization.Serializable
 
 @JvmInline
 @Serializable
-value class AtletaID(val value: Int)
+value class AtletaId(val value: Int)
 
 @JvmInline
 @Serializable
-value class DeporteId(val value:Int)
+value class DeporteId(val value: Int)
 
 @JvmInline
 @Serializable
-value class  UserID (val value: Int)
+value class UserID(val value: Int)
 
 @JvmInline
 @Serializable
 value class LigaID(val value: Int)
 
+@JvmInline
+value class EquipoId(val value: String)
