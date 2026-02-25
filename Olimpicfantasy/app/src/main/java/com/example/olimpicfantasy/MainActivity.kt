@@ -9,9 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.olimpicfantasy.ui.auth.AuthViewModel
+import com.example.olimpicfantasy.ui.auth.RegisterScreen
 import com.example.olimpicfantasy.ui.theme.OlimpicFantasyTheme
-// ¡Importante! Aquí importamos tu nueva pantalla
-import com.example.olimpicfantasy.ui.auth.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,20 +21,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             OlimpicFantasyTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-
                     Box(modifier = Modifier.padding(innerPadding)) {
 
 
-                        LoginScreen(
-                            onNavigateToRegister = {
-                                // De momento lo dejamos vacío.
-                                // Más adelante aquí pondremos el código para cambiar de pantalla.
-                                println("Botón Registro pulsado")
+                        val authViewModel: AuthViewModel = viewModel()
+
+
+                        RegisterScreen(
+                            onNavigateToLogin = {
+                                println("Botón ir a login pulsado")
                             },
-                            onLoginClick = { email, password ->
-                                // Aquí conectaremos con la lógica (UseCase) para comprobar el usuario
-                                println("Intentando login con: $email y $password")
+                            onRegisterClick = { nombre, email, password ->
+
+                                authViewModel.registrarUsuario(nombre, email, password)
                             }
                         )
 

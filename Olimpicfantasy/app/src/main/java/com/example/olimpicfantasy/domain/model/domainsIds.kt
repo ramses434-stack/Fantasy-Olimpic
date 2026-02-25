@@ -12,7 +12,7 @@ value class DeporteId(val value: Int)
 
 @JvmInline
 @Serializable
-value class UserID(val value: Int)
+value class UserID(val value: String)
 
 @JvmInline
 @Serializable
