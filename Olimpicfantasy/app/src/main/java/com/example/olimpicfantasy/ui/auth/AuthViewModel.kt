@@ -1,6 +1,5 @@
 package com.example.olimpicfantasy.ui.auth
 
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.olimpicfantasy.data.repository.AuthRepositoryImpl
@@ -11,19 +10,22 @@ class AuthViewModel : ViewModel() {
     private val repository = AuthRepositoryImpl()
 
 
-    fun registrarUsuario(nombre: String, email: String, password: String) {
-
+    fun registrarUsuario(
+        nombre: String,
+        email: String,
+        password: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
         viewModelScope.launch {
-            println("⏳ Intentando registrar usuario...")
-
             val resultado = repository.register(nombre, email, password)
 
             if (resultado.isSuccess) {
 
-                println("✅ ¡ÉXITO! Usuario guardado en Supabase con ID: ${resultado.getOrNull()?.value}")
+                onSuccess()
             } else {
 
-                println("❌ ERROR al registrar: ${resultado.exceptionOrNull()?.message}")
+                onError(resultado.exceptionOrNull()?.message ?: "Error desconocido")
             }
         }
     }

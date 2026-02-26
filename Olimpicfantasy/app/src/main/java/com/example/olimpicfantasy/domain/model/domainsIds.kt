@@ -4,11 +4,11 @@ import kotlinx.serialization.Serializable
 
 @JvmInline
 @Serializable
-value class AtletaId(val value: Int)
+value class AtletaId(val value: String)
 
 @JvmInline
 @Serializable
-value class DeporteId(val value: Int)
+value class DeporteId(val value: String)
 
 @JvmInline
 @Serializable
