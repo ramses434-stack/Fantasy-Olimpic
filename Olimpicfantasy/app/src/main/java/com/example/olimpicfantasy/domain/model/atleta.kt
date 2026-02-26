@@ -6,13 +6,12 @@ import kotlinx.serialization.Serializable
 data class Atleta(
     val atletaID: AtletaID,
     val nombre: String,
-
-
+    val apellido: String,
+    val nacionalidad: String,
     val deporteId: DeporteId,
     val fotoUrl: String?,
-
     val precio: Long,
-    val estado: EstadoAtleta
+    val estado: String
 ) {
 
     init {
